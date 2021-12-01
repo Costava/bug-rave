@@ -2,6 +2,8 @@
 
 We visit the bug rave.
 
+[Play Online](https://withcostava.itch.io/bug-rave)
+
 Press `W` to enter the rave.  
 In the rave, press `R` to reenter zen.  
 Drive with `WASD`.  
