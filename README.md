@@ -2,9 +2,9 @@
 
 We visit the bug rave.
 
-Click to enter the rave.  
-In the rave, click again to reenter zen.  
-Drive with WASD.  
+Press `W` to enter the rave.  
+In the rave, press `R` to reenter zen.  
+Drive with `WASD`.  
 Move camera with mouse.  
 Hold Shift for Turbo.  
 Eliminate the bugs.  

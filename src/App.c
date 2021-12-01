@@ -1340,14 +1340,6 @@ static void PollEvents(
             }
             case SDL_MOUSEBUTTONDOWN:
             {
-                if (!app->transMode) {
-                    app->transMode = true;
-                    app->transModeStartTimeMs = timeMs;
-                    app->transModeEndTimeMs = app->transModeStartTimeMs +
-                        app->transToMainDurationMs;
-
-                    Mix_FadeOutMusic(app->transToMainDurationMs);
-                }
                 break;
             }
             case SDL_KEYDOWN:
@@ -1359,6 +1351,19 @@ static void PollEvents(
                     case SDLK_F1:
                     {
                         app->showInfoText = !app->showInfoText;
+                        break;
+                    }
+                    case SDLK_r:
+                    {
+                        if (!app->transMode) {
+                            app->transMode = true;
+                            app->transModeStartTimeMs = timeMs;
+                            app->transModeEndTimeMs =
+                                app->transModeStartTimeMs +
+                                app->transToMainDurationMs;
+
+                            Mix_FadeOutMusic(app->transToMainDurationMs);
+                        }
                         break;
                     }
                 }
@@ -1484,16 +1489,6 @@ EM_BOOL App_IterateMain(double timeMs, void* userData) {
             }
             case SDL_MOUSEBUTTONDOWN:
             {
-                if (!app->transMode) {
-                    app->transMode = true;
-                    app->transModeStartTimeMs = timeMs;
-                    app->transModeEndTimeMs = app->transModeStartTimeMs +
-                        app->transToGameDurationMs;
-
-                    Mix_FadeInMusicPos(app->music, -1,
-                        app->transToGameDurationMs,
-                        21.5 - (app->transToGameDurationMs / 1000.0));
-                }
                 break;
             }
             case SDL_KEYDOWN:
@@ -1504,6 +1499,24 @@ EM_BOOL App_IterateMain(double timeMs, void* userData) {
                 switch (keycode) {
                     case SDLK_F1:
                     {
+                        break;
+                    }
+                    case SDLK_w:
+                    case SDLK_a:
+                    case SDLK_s:
+                    case SDLK_d:
+                    {
+                        if (!app->transMode) {
+                            app->transMode = true;
+                            app->transModeStartTimeMs = timeMs;
+                            app->transModeEndTimeMs =
+                                app->transModeStartTimeMs +
+                                app->transToGameDurationMs;
+
+                            Mix_FadeInMusicPos(app->music, -1,
+                                app->transToGameDurationMs,
+                                21.5 - (app->transToGameDurationMs / 1000.0));
+                        }
                         break;
                     }
                 }
