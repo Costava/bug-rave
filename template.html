@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!-- Based on https://stackoverflow.com/questions/67175588 -->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <style>
+        html {
+            box-sizing: border-box;
+        }
+
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+
+            margin: 0;
+            border: 0;
+            padding: 0;
+
+            background-color: black;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Create the canvas that the C code will draw into -->
+    <canvas id="canvas" oncontextmenu="event.preventDefault()"></canvas>
+
+    <!-- Allow the C to access the canvas element -->
+    <script type='text/javascript'>
+        var Module = {
+            canvas: (function() { return document.getElementById('canvas'); })()
+        };
+    </script>
+
+    {{{ SCRIPT }}}
+</body>
+
+</html>
