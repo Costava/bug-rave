@@ -16,7 +16,6 @@
 #include "TriInfo.h"
 #include "UnitSpherCoord.h"
 #include "Util.h"
-#include "v.h"
 #include "v2d.h"
 #include "v3d.h"
 
